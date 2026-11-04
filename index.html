@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ericka Eunice L. Lazo | IT Support Specialist</title>
+<meta name="description" content="Personal home page of Ericka Eunice L. Lazo, BSIT student and IT support specialist.">
+
+<!-- Fonts (from Google Fonts) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Montserrat:wght@500;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+<!--
+  ============================================================
+  HOW THIS FILE IS ORGANIZED
+  1. STYLES   - colors, fonts, and layout (inside <style>)
+  2. PAGE     - the content you see, top to bottom:
+                Header -> About -> Skills -> Experience ->
+                Education -> Contact -> Footer
+  3. SCRIPT   - makes the message form send (at the very bottom)
+
+  QUICK EDITS
+  - Change text: find it in the PAGE part and retype it.
+  - Change colors: edit the values under "COLORS" below.
+  - Change photo: replace photo.jpg (same file name).
+  - Message form: replace PASTE_YOUR_ACCESS_KEY_HERE in the Contact section.
+  ============================================================
+-->
+
+<style>
+/* ============ 1. COLORS (matched to the calling card) ============ */
+:root{
+  --rose:#B27B88;       /* main mauve, like the name on the card */
+  --rose-deep:#8A5563;  /* darker rose for buttons and small text */
+  --rose-soft:#D9B2BC;  /* light rose for borders */
+  --blush:#FAF3F5;      /* very light pink background */
+  --ink:#111111;        /* black text and lines */
+  --muted:#555055;      /* grey text */
+  --line:#EBDDE1;       /* thin divider lines */
+}
+
+/* ============ 2. BASIC SETUP ============ */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Open Sans",Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.7;font-size:1rem}
+a{color:var(--rose-deep)}
+a:focus-visible,input:focus-visible,textarea:focus-visible,button:focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px}  /* keeps content centered */
+
+/* ============ 3. HEADER: menu, name, monogram ============ */
+nav{display:flex;gap:22px;flex-wrap:wrap;padding:18px 0;font-size:.9rem}
+nav a{text-decoration:none;color:var(--muted);font-weight:600}
+nav a:hover{color:var(--rose-deep);text-decoration:underline}
+
+.hero{display:flex;align-items:center;justify-content:space-between;gap:32px;padding:36px 0 32px}
+.hero h1{margin:0;font-family:"Montserrat",Arial,sans-serif;font-weight:800;color:var(--rose);font-size:clamp(2rem,6vw,3.5rem);line-height:1.1;letter-spacing:-.01em}
+.hero .title{margin:14px 0 0;font-weight:700;font-size:1.15rem}
+.hero .sub{margin:4px 0 0;color:var(--muted)}
+.rule{border:0;border-top:2px solid var(--ink);margin:0}  /* black line, like the card */
+
+/* EL monogram (script style, like the calling card) */
+.mono{flex-shrink:1;font-family:"Allura","Brush Script MT",cursive;color:var(--rose-soft);font-size:clamp(4.5rem,13vw,8rem);line-height:1.2;padding:0 .2em 0 .1em}
+
+/* ============ 4. CONTENT SECTIONS ============ */
+section{padding:44px 0;border-bottom:1px solid var(--line);scroll-margin-top:8px}
+h2{margin:0 0 16px;font-family:"Montserrat",Arial,sans-serif;font-size:1.5rem;font-weight:800;color:var(--rose)}
+h3{margin:0;font-family:"Montserrat",Arial,sans-serif;font-size:1.02rem;font-weight:700}
+.role{color:var(--muted);margin:2px 0 8px;font-size:.95rem}   /* dates and school names */
+.job{margin-bottom:26px}
+ul{margin:8px 0 0;padding-left:20px}
+li{margin-bottom:6px}
+
+/* About Me: photo beside the text */
+.about{display:flex;align-items:flex-start;gap:32px}
+.about p{margin:0}
+.about-photo{flex-shrink:0;width:220px;height:260px;object-fit:cover;object-position:center 30%;border-radius:16px;border:3px solid var(--rose-soft);background:var(--blush)}
+
+/* Skills shown as rounded tags */
+.skills{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.skills li{margin:0;background:var(--blush);border:1px solid var(--rose-soft);border-radius:999px;padding:6px 16px;font-size:.92rem}
+
+/* ============ 5. CONTACT SECTION AND FORM ============ */
+#contact{border-bottom:0}
+#contact .eyebrow{margin:0 0 8px;font-family:"Montserrat",Arial,sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.14em;color:var(--rose-deep)}
+#contact h2{font-size:clamp(1.7rem,4.5vw,2.4rem);line-height:1.2;color:var(--ink)}
+#contact h2 span{color:var(--rose)}
+#contact .intro{color:var(--muted);max-width:620px;margin:0 0 24px}
+
+.pills{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:32px}   /* Email Me / LinkedIn buttons */
+.pills a{border:1.5px solid var(--rose);color:var(--rose-deep);text-decoration:none;border-radius:999px;padding:9px 22px;font-weight:600}
+.pills a:hover{background:var(--blush)}
+
+form{display:grid;gap:18px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:18px}          /* name and email side by side */
+label{display:grid;gap:8px;font-weight:600;font-size:.95rem}
+input[type=text],input[type=email],textarea{font:inherit;font-weight:400;padding:13px 15px;border:1.5px solid var(--rose-soft);border-radius:8px;background:#fff;color:var(--ink);width:100%}
+input::placeholder,textarea::placeholder{color:#8F858A}
+textarea{min-height:140px;resize:vertical}
+button{font-family:"Montserrat",Arial,sans-serif;font-size:1rem;font-weight:700;background:var(--rose-deep);color:#fff;border:0;border-radius:999px;padding:13px 30px;cursor:pointer;justify-self:start}
+button:hover{background:var(--rose)}
+button:disabled{opacity:.6;cursor:wait}
+#form-status{margin:0;font-weight:600;min-height:1.5em}
+.hp{position:absolute;left:-9999px}   /* hidden spam trap, leave as is */
+
+/* ============ 6. FOOTER ============ */
+footer{border-top:2px solid var(--ink);color:var(--muted);text-align:center;padding:20px;font-size:.85rem}
+
+/* ============ 7. PHONE SCREENS ============ */
+@media (max-width:600px){
+  .hero{flex-direction:column-reverse;align-items:flex-start;gap:12px}
+  .about{flex-direction:column}
+  .about-photo{width:100%;max-width:280px;height:auto;aspect-ratio:1/1}
+  .row{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="wrap">
+
+  <!-- Menu -->
+  <nav aria-label="Main">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- Name, title, and monogram -->
+  <div class="hero">
+    <div>
+      <h1>Ericka Eunice L. Lazo</h1>
+      <p class="title">IT Support Specialist</p>
+      <p class="sub">BSIT student at Batangas State University, Lipa Campus</p>
+    </div>
+
+    <!-- EL monogram, like on the calling card -->
+    <div class="mono" aria-hidden="true">EL</div>
+  </div>
+
+  <hr class="rule">
+</header>
+
+<main class="wrap">
+
+<!-- ================= ABOUT ME ================= -->
+<section id="about">
+  <h2>About Me</h2>
+  <div class="about">
+    <!-- Your photo. To change it, replace the file photo.jpg -->
+    <img class="about-photo" src="photo.jpg" alt="Ericka Eunice L. Lazo smiling" onerror="this.style.display='none'">
+    <p>I am a third-year Information Technology student who is organized, detail-oriented, and strong at planning. With hands-on customer service experience, I enjoy solving problems, communicating clearly, and keeping work on schedule. I am looking for opportunities to apply my technical and interpersonal skills and to keep growing in the IT field.</p>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills">
+  <h2>Skills and Strengths</h2>
+  <ul class="skills">
+    <li>Organization and planning</li>
+    <li>Time management and multitasking</li>
+    <li>Customer service</li>
+    <li>Verbal and written communication</li>
+    <li>Problem-solving and troubleshooting</li>
+    <li>Teamwork and collaboration</li>
+    <li>Typing and documentation</li>
+    <li>Basic photography and editing</li>
+    <li>Adaptability and willingness to learn</li>
+  </ul>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience">
+  <h2>Experience</h2>
+
+  <!-- Job 1 (copy this block to add another job) -->
+  <div class="job">
+    <h3>Customer Service Representative</h3>
+    <p class="role">June 2026 to August 2026</p>
+    <ul>
+      <li>Identified customer needs through active listening to give accurate, efficient solutions on first contact.</li>
+      <li>Processed orders, returns, exchanges, and billing adjustments following company policy.</li>
+      <li>Used multiple operating systems and knowledge bases at once to troubleshoot issues in real time.</li>
+      <li>Handled frustrated customers with empathy, patience, and professional communication.</li>
+    </ul>
+  </div>
+
+  <!-- Job 2 -->
+  <div class="job">
+    <h3>Event Service Assistant, Drix Catering Services</h3>
+    <p class="role">Family business, 2019 to 2024</p>
+    <ul>
+      <li>Supported event operations in fast-paced, high-pressure settings.</li>
+      <li>Worked with team members to keep service running smoothly.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= EDUCATION ================= -->
+<section id="education">
+  <h2>Education</h2>
+
+  <div class="job">
+    <h3>Bachelor of Science in Information Technology</h3>
+    <p class="role">Batangas State University, Lipa Campus, 2024 to 2028</p>
+  </div>
+
+  <div class="job">
+    <h3>Science, Technology, Engineering, and Mathematics (STEM)</h3>
+    <p class="role">The Mabini Academy of Lipa, 2018 to 2024</p>
+  </div>
+
+  <p><strong>Languages:</strong> English, Filipino</p>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <p class="eyebrow">LET'S CONNECT</p>
+  <h2>Organized plans, <span>dependable results.</span></h2>
+  <p class="intro">I am open to internship and entry-level IT support opportunities where I can apply my skills and keep growing. Feel free to reach me through email or LinkedIn. I am based in Lipa City, Batangas.</p>
+
+  <!-- Quick links -->
+  <div class="pills">
+    <a href="mailto:eunicelorialazo@gmail.com">Email Me</a>
+    <a href="https://www.linkedin.com/in/ericka-lazo-a29b0a431" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+
+  <!-- Message form: messages are sent to your Gmail through Web3Forms -->
+  <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+
+    <!-- Hidden settings. Replace the key below with your own Web3Forms access key. -->
+    <input type="hidden" name="access_key" value="PASTE_YOUR_ACCESS_KEY_HERE">
+    <input type="hidden" name="subject" value="New message from your home page">
+    <input type="hidden" name="from_name" value="Home Page Contact Form">
+    <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+    <!-- Visible fields -->
+    <div class="row">
+      <label>Full Name
+        <input type="text" name="name" placeholder="Your full name" required autocomplete="name">
+      </label>
+      <label>Email Address
+        <input type="email" name="email" placeholder="you@example.com" required autocomplete="email">
+      </label>
+    </div>
+    <label>Message
+      <textarea name="message" placeholder="Write your message here..." required></textarea>
+    </label>
+
+    <button type="submit">Send Message</button>
+    <p id="form-status" role="status" aria-live="polite"></p>
+  </form>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>&copy; 2026 Ericka Eunice L. Lazo</footer>
+
+<!-- ================= 3. SCRIPT: sends the form without leaving the page ================= -->
+<script>
+var form = document.getElementById("contact-form");
+var statusEl = document.getElementById("form-status");
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();                       // stay on the page
+  var btn = form.querySelector("button");
+  btn.disabled = true;
+  statusEl.textContent = "Sending...";
+
+  fetch(form.action, {
+    method: "POST",
+    headers: { "Accept": "application/json" },
+    body: new FormData(form)
+  })
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      if (data.success) {
+        statusEl.textContent = "Thank you! Your message was sent.";
+        form.reset();
+      } else {
+        statusEl.textContent = "Message not sent. Please email me directly at eunicelorialazo@gmail.com.";
+      }
+    })
+    .catch(function () {
+      statusEl.textContent = "Message not sent. Please email me directly at eunicelorialazo@gmail.com.";
+    })
+    .finally(function () { btn.disabled = false; });
+});
+</script>
+
+</body>
+</html>
