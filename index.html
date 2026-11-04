@@ -24,7 +24,7 @@
   - Change text: find it in the PAGE part and retype it.
   - Change colors: edit the values under "COLORS" below.
   - Change photo: replace photo.jpg (same file name).
-  - Message form: replace 6b0bc3db-6609-4f3e-bba7-0007fd75b7af in the Contact section.
+  - Message form: the Web3Forms access key is set in the Contact section (name="access_key").
   ============================================================
 -->
 
@@ -233,7 +233,7 @@ footer{border-top:2px solid var(--ink);color:var(--muted);text-align:center;padd
   <!-- Message form: messages are sent to your Gmail through Web3Forms -->
   <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
 
-    <!-- Hidden settings. Replace the key below with your own Web3Forms access key. -->
+    <!-- Hidden settings. The value below is your Web3Forms access key. -->
     <input type="hidden" name="access_key" value="6b0bc3db-6609-4f3e-bba7-0007fd75b7af">
     <input type="hidden" name="subject" value="New message from your home page">
     <input type="hidden" name="from_name" value="Home Page Contact Form">
@@ -284,11 +284,13 @@ form.addEventListener("submit", function (e) {
         statusEl.textContent = "Thank you! Your message was sent.";
         form.reset();
       } else {
-        statusEl.textContent = "Message not sent. Please email me directly at eunicelorialazo@gmail.com.";
+        // Shows the reason given by Web3Forms
+        statusEl.textContent = "Message not sent (" + (data.message || "unknown reason") + "). You can also email me at eunicelorialazo@gmail.com.";
       }
     })
-    .catch(function () {
-      statusEl.textContent = "Message not sent. Please email me directly at eunicelorialazo@gmail.com.";
+    .catch(function (err) {
+      // Usually an internet problem or a browser extension blocking the request
+      statusEl.textContent = "Message not sent (connection blocked or offline). Try another browser, or email me at eunicelorialazo@gmail.com.";
     })
     .finally(function () { btn.disabled = false; });
 });
